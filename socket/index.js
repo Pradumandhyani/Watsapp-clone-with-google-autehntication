@@ -1,4 +1,4 @@
-import { Server } from 'socket.io';
+import  {Server}  from 'socket.io';
 
 const io = new Server(9000, {
     cors: {
