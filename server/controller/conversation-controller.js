@@ -16,6 +16,7 @@ export const newConversation = async (request, response) => {
         members: [senderId, receiverId]
     });
 
+    
     try {
         const savedConversation = await newConversation.save();
         response.status(200).json(savedConversation);
