@@ -1,6 +1,7 @@
 import Conversation  from "../modal/Conversation.js";
 
 
+
 export const newConversation = async (request, response) => {
     let senderId = request.body.senderId;
     let receiverId = request.body.receiverId;
@@ -15,6 +16,7 @@ export const newConversation = async (request, response) => {
         members: [senderId, receiverId]
     });
 
+    
     try {
         const savedConversation = await newConversation.save();
         response.status(200).json(savedConversation);
