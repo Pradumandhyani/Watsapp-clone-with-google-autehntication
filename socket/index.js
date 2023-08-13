@@ -1,11 +1,10 @@
-import  {Server}  from 'socket.io';
+import  { Server }  from 'socket.io';
 
 const io = new Server(9000, {
     cors: {
         origin: 'http://localhost:3000',
     }, 
 })
-
 
 let users = [];
 
@@ -33,7 +32,11 @@ io.on('connection',  (socket) => {
     //send message
     socket.on('sendMessage', (data) => {
         const user = getUser(data.receiverId);
-        io.to(user.socketId).emit('getMessage', data)
+        if (user) {
+            io.to(user.socketId).emit('getMessage', data);
+        } else {
+            console.log(`User with ID ${data.receiverId} not found.`);
+        }
     })
 
     //disconnect
